@@ -1,61 +1,75 @@
-// Import statements comes here.
+import $ from "jquery";
 import React from 'react';
-var i=0
-var quotes=[1,2,3,4,4,5,5,6,66]
-class Quotes extends React.Component {
+let i=0;
+let quotesData;
+       class Quotes extends React.Component {
     constructor(props){
       super(props);
       this.handleClick=this.handleClick.bind(this);
+      this.getQuotes=this.getQuotes.bind(this);
+      this.handleTweet=this.handleTweet.bind(this)
       this.state={
+     
         //i:0,
-        //quotes:[1,2,3,4,4,5,5,6,66],
-        current:quotes[i]
+        currentQuote:"Start where you are. Use what you have. Do what you can",
+        currentAuth:'Arthur Ashe'
+   
+
       }
     }
-  
-    handleClick(event){
-      if(i<quotes.length-1){
-      i=i+1}
-      else{
-        i=0
-      }
-      this.setState({
-       
-        current:quotes[i],
-        
 
+ componentDidMount() {
+  this.getQuotes();
+  
+  
+ }
+    getQuotes() {
+      return $.ajax({
+        headers: {
+          Accept: "application/json"
+        },
+        url: 'https://raw.githubusercontent.com/ubermachine/react-randomQuoteGen/master/src/assets/quotes',
+        success: function(jsonQuotes) {
+          if (typeof jsonQuotes === 'string') {
+            quotesData = JSON.parse(jsonQuotes);
+    
+          }
+        }
       });
+    }
+
+    handleClick(){
+      let col=`#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
+      $(".App-header").css("color",col );
+      $(".App-header").css("background-color",col );
+      $("#new-quote").css("background-color",col );
+      
+      i=Math.floor(Math.random()*(quotesData.quotes.length-1))
+      this.setState({
+        currentQuote:quotesData.quotes[i].quote,
+        currentAuth:quotesData.quotes[i].author
+      });
+      
+      
+    }
+    handleTweet(){
+      $('#tweet-quote').attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + this.state.currentQuote + '" ' + this.state.currentAuth));
     }
     render(){
       return(
         <div id='wrapper'>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
         <div id='quote-box'>
-          <div id="text" >{this.state.current}</div>
-          <div id="author">techin</div>
-          <button class="btn btn-info" id="new-quote" onClick={this.handleClick}>New quote</button>
-          
-          <a class="button" id="tweet-quote" title="Tweet this quote!" target="_blank">
-          <i class="fa fa-twitter"></i>
+          <div id="text" >{this.state.currentQuote}</div>
+          <div id="author">{this.state.currentAuth}</div>
+          <button class='btn btn-info btn-sm' id="new-quote" onClick={this.handleClick}>New quote</button>
+          <a class="button" id="tweet-quote" title="Tweet this quote!" target="_blank" onClick={this.handleTweet}>
+        <i class="fa fa-twitter"></i>
       </a>
         </div>
       </div>
       )
     }
 }
-// This function renders a component
-   /* render() {
-
-        // Whatever is returned is rendered
-        return (
-            <div id='wrapper'>
-            <div id='quote-box'>
-              <div id="text">Hua</div>
-              <div id="author">techin</div>
-              <button class="btn btn-info" id="new-quote">New quote</button>
-              <button class="btn btn-primary" id="tweet-quote">tweet</button>
-            </div>
-          </div>
-        )
-    }
-}*/
 export default Quotes;
