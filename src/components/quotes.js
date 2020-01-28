@@ -58,7 +58,6 @@ let quotesData;
     render(){
       return(
         <div id='wrapper'>
-<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 
         <div id='quote-box'>
           <div id="text" >{this.state.currentQuote}</div>
