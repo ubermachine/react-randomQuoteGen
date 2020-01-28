@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9ac313b064208b50c203c0ccba595f7a",
+    "revision": "c3929045951d99561f494f2d76eef7d0",
     "url": "/react-randomQuoteGen/index.html"
   },
   {
-    "revision": "4504ff8af6c48062024f",
+    "revision": "a4d52367884c967a6d50",
     "url": "/react-randomQuoteGen/static/css/2.47e06e2e.chunk.css"
   },
   {
-    "revision": "d2185ea97b74b3bff5d5",
+    "revision": "27131dcbf29300444fa4",
     "url": "/react-randomQuoteGen/static/css/main.d0a9e5c3.chunk.css"
   },
   {
-    "revision": "4504ff8af6c48062024f",
-    "url": "/react-randomQuoteGen/static/js/2.14784463.chunk.js"
+    "revision": "a4d52367884c967a6d50",
+    "url": "/react-randomQuoteGen/static/js/2.7d1ea56c.chunk.js"
   },
   {
     "revision": "8de4bdbb127f280cc6b79279dd69f244",
-    "url": "/react-randomQuoteGen/static/js/2.14784463.chunk.js.LICENSE"
+    "url": "/react-randomQuoteGen/static/js/2.7d1ea56c.chunk.js.LICENSE"
   },
   {
-    "revision": "d2185ea97b74b3bff5d5",
-    "url": "/react-randomQuoteGen/static/js/main.5f992840.chunk.js"
+    "revision": "27131dcbf29300444fa4",
+    "url": "/react-randomQuoteGen/static/js/main.77b3d8a2.chunk.js"
   },
   {
     "revision": "341ded1b5481c316418f",
